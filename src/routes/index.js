@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { GetTrendController } = require('../controllers');
+const { realtimeTrend } = require('../socket');
 
 const routes = Router()
 const getTrendController = new GetTrendController({ geo: 'BR' })
@@ -11,6 +12,7 @@ routes.get('/realtime', async (req, res) => {
   try {
     const { category } = req.query
     const trends = await getTrendController.realTimeTrends(category)
+    realtimeTrend(trends)
     return res.status(200).json({ trends })
   } catch (error) {
     return res.status(500).json(error.message)
