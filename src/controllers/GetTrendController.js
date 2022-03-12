@@ -52,7 +52,6 @@ class GetTrendController {
     });
     return trends
   }
-
 }
 
 module.exports = GetTrendController 
