@@ -3,12 +3,11 @@ const googleTrends = require('google-trends-api')
 class GetTrendController {
   /**
    * @param {Object} data
-   * @param {String} data.geo Example - ("US", "BR")
+   * @param {String=} data.geo Example - ("US", "BR")
    */
   constructor({ geo = 'BR' }) {
     this.geo = geo;
   }
-
 
   async realTimeTrends(category) {
     const necessaryInfos = []
